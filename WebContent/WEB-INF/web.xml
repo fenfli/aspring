@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	<display-name>aspring</display-name>
+	<!-- 应用上下文配置文件 --> 
+	<context-param>  
+		<param-name>contextConfigLocation</param-name>  
+		<param-value>/WEB-INF/spring-servlet.xml</param-value>
+	</context-param>
+	<listener>  
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+	</listener>
+	
+	<!-- Log4j配置 -->
+	<context-param> 
+	    <param-name>log4jConfigLocation</param-name> 
+        <param-value>/WEB-INF/log4j.properties</param-value> 
+    </context-param>
+    
+    <!-- 修改log4j不需要重启服务 -->
+    <!--
+    <context-param> 
+	    <param-name>log4jRefreshInterval</param-name> 
+	    <param-value>60000</param-value> 
+	</context-param> 
+    <listener> 
+	    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class> 
+	</listener>
+	-->
+	
+	<!-- 解决乱码问题 -->  
+    <filter>  
+        <filter-name>SpringEncodingFilter</filter-name>  
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
+        <init-param>  
+            <param-name>encoding</param-name>  
+            <param-value>UTF-8</param-value>  
+        </init-param>  
+        <init-param>  
+            <param-name>forceEncoding</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>SpringEncodingFilter</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>
+    
+    <!-- 配置Shiro过滤器, 先让Shiro过滤系统接收到的请求 -->  
+    <!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->  
+    <!-- 使用[/*]匹配所有请求,保证所有的可控请求都经过Shiro的过滤 -->  
+    <!-- 通常会将此filter-mapping放置到最前面(即其他filter-mapping前面), 以保证它是过滤器链中第一个起作用的 -->  
+    <filter>  
+        <filter-name>shiroFilter</filter-name>  
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+        <init-param>  
+            <!-- 该值缺省为false, 表示生命周期由SpringApplicationContext管理, 设置为true则表示由ServletContainer管理 -->  
+            <param-name>targetFilterLifecycle</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>shiroFilter</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>  
+    
+    <!-- 自定义访问资源控制Filter, 不使用, 已交由Shiro管理 -->
+    <!--
+    <filter>  
+	    <filter-name>SecurityFilter</filter-name>  
+	    <filter-class>com.slb.web.filter.SecurityFilter</filter-class>  
+	</filter>  
+	<filter-mapping>  
+	    <filter-name>SecurityFilter</filter-name>  
+	    <url-pattern>*.jsp</url-pattern>
+	    <url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	-->
+	
+	<!-- 配置Spring核心servlet -->  
+	<servlet>  
+		<servlet-name>spring</servlet-name>  
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
+		<load-on-startup>1</load-on-startup>  
+	</servlet>  
+	<!-- url-pattern配置为/, 会影响静态文件css, js等的访问  -->  
+	<servlet-mapping>  
+		<servlet-name>spring</servlet-name>  
+		<url-pattern>*.do</url-pattern>  
+	</servlet-mapping>  
+	
+    <!-- 登录Servlet -->
+    <!-- 可使用Controller, 此处用Servlet, 主要为了简洁请求地址-->
+    <servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.slb.web.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Welcome file -->
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- Error 配置 -->
+	<error-page>  
+        <error-code>405</error-code>  
+        <location>/405.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>404</error-code>  
+        <location>/404.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>500</error-code>  
+        <location>/500.jsp</location>  
+    </error-page> 
+    <error-page>  
+        <exception-type>java.lang.Throwable</exception-type>  
+        <location>/sys002.jsp</location>  
+    </error-page>  
+</web-app>

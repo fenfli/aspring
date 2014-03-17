@@ -1,0 +1,69 @@
+/************ scroll bar ************/
+/*
+::-webkit-scrollbar {
+	width: 10px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+	background-color: #444444;
+	-webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+	height: 5px;
+	background-color: #eeeeee;
+	-webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+	width: 5px;
+	background-color: #eeeeee;
+	-webkit-border-radius: 6px;
+}
+
+html,body {
+	scrollbar-face-color: #eeeeee;
+	scrollbar-shadow-color: #444444;
+	scrollbar-highlight-color: #444444;
+	scrollbar-3dlight-color: #444444;
+	scrollbar-darkshadow-color: #444444;
+	scrollbar-track-color: #444444;
+	scrollbar-arrow-color: #444444;
+}
+*/
+/************ login ************/
+#verifycodeimage {
+	width: 250px;
+	height: 30px;
+	cursor: pointer;
+	padding: 2px;
+}
+
+.error {
+	color: #d14;
+}
+/************ index ************/
+#sidebar ul.mini-menu {
+	width: 50px;
+}
+
+#content.mini-content {
+	margin-left: 50px;
+}
+
+#sidebar>ul.mini-menu>li>a>.label {
+	margin: 0px;
+}
+
+#sidebar>ul.mini-menu>li>a>i {
+	margin-right: 0px;
+}
+
+#sidebar>ul.mini-menu ul li a {
+	padding-left: 0px;
+}
+
+#sidebar .slb-submenu {
+	text-align: center;
+}
