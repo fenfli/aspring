@@ -19,7 +19,7 @@ V0.0.0.1功能修改列表(@2013/11)：<br />
 1、登录控制，添加验证码<br />
 2、安全控制，角色/权限控制<br />
 3、响应式Web框架<br />
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
  UI Template列表
  * Dashboard 
  * Form - Common Elements、validation、wizard
@@ -31,13 +31,12 @@ V0.0.0.1功能修改列表(@2013/11)：<br />
  * Widgets
  * Fold & Expansion
  * Samples - JdbcTemplate、Invoice、Support chat、Calendar、Gallery
-<p>
+ <br />
+
+
 4、Jdbc事务控制<br />
 5、Log控制<br />
 6、Session控制<br />
-</p>
-
 
 协议：<br />
-框架遵循Apache License 2.0协议发布。<br />
-（如有问题&Bug反馈等请告知：gisape@suanleba.com）
+框架遵循Apache License 2.0协议发布。（如有问题&Bug反馈等请告知：gisape@suanleba.com）
