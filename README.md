@@ -19,7 +19,8 @@ V0.0.0.1功能修改列表(@2013/11)：<br />
 1、登录控制，添加验证码<br />
 2、安全控制，角色/权限控制<br />
 3、响应式Web框架<br />
- UI Template列表<br />
+&nbsp;&nbsp;&nbsp;&nbsp;
+ UI Template列表
  * Dashboard 
  * Form - Common Elements、validation、wizard
  * Buttons & icons
@@ -29,12 +30,12 @@ V0.0.0.1功能修改列表(@2013/11)：<br />
  * Charts & graphs
  * Widgets
  * Fold & Expansion
- * Samples - JdbcTemplate、Invoice、Support chat、Calendar、Gallery<br />
+ * Samples - JdbcTemplate、Invoice、Support chat、Calendar、Gallery
+<p>
 4、Jdbc事务控制<br />
 5、Log控制<br />
 6、Session控制<br />
-
-<p></p>
+</p>
 
 
 协议：<br />
