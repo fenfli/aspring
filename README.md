@@ -35,8 +35,9 @@ V0.0.0.1功能修改列表(@2013/11)：<br />
 
 
 4、Jdbc事务控制<br />
-5、Log控制<br />
-6、Session控制<br />
+5、异常管理<br />
+6、Log控制<br />
+7、Session控制<br />
 
 协议：<br />
 框架遵循Apache License 2.0协议发布。（如有问题&Bug反馈等请告知：gisape@suanleba.com）
